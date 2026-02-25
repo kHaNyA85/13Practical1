@@ -52,3 +52,26 @@ public static int binarySearch(int[] arr, int key) {
         }
         return keys;
     }
+
+
+public static void main(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Please provide the filename as an argument.");
+            return;
+        }
+
+        String filename = args[0];
+        int[] data = null;
+
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            data = new int[100];
+            int index = 0;
+            while (scanner.hasNextInt()) {
+                if (index < data.length) {
+                    data[index++] = scanner.nextInt();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filename);
+            return;
+        }
