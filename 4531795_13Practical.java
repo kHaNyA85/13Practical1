@@ -75,3 +75,28 @@ public static void main(String[] args) {
             System.out.println("File not found: " + filename);
             return;
         }
+
+
+
+if (data == null || data.length == 0) {
+            System.out.println("No data read from file.");
+            return;
+        }
+
+        Arrays.sort(data);
+
+        int key = generateRandomKeys(1, 100)[0];
+
+        long startTime = System.nanoTime();
+        int linearResult = linearSearch(data, key);
+        long durationLinear = System.nanoTime() - startTime;
+
+        startTime = System.nanoTime();
+        int binaryResult = binarySearch(data, key);
+        long durationBinary = System.nanoTime() - startTime;
+
+        System.out.println("Key: " + key);
+        System.out.println("Linear Search Index: " + linearResult + ", Time: " + durationLinear + " ns");
+        System.out.println("Binary Search Index: " + binaryResult + ", Time: " + durationBinary + " ns");
+    }
+}
